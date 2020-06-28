@@ -15,10 +15,12 @@ import SwiftUI
 
 struct ContentView: View {
     @State var alertIsVisible: Bool = false
+    @State var sliderValue: Double = 50.0
     
     // User interface content and layout
     var body: some View {
         VStack {
+            Spacer()
             
             // Target now
             HStack {
@@ -26,13 +28,16 @@ struct ContentView: View {
                 Text("100")
             }
             
+            Spacer()
+            
             // Slider row
             HStack {
             Text("1")
-                Slider(value: .constant(10))
+                Slider(value: self.$sliderValue, in: 1...100)
             Text("100")
             }
             
+            Spacer()
             // Button
             
             Button(action: {
@@ -46,6 +51,7 @@ struct ContentView: View {
                       message: Text("This is my first pop-up."),
                       dismissButton: .default(Text("Awesome!")))
             }
+            Spacer()
             
             // Score row
                 
@@ -64,6 +70,7 @@ struct ContentView: View {
                     Text("Info")
                 }
             }
+            .padding(.bottom, 20)
         }
     }
     // Methods
